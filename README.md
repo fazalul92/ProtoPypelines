@@ -9,9 +9,23 @@ It is due to this that I've written up the requirements for an application that 
 
 
 ## Initial Requirements
-1. Import an "ipynb" file to parse.
+#### Broader Requirements
+* Generate workflows/pipelines from existing files without much modification.
+* Minimal code for implementation
+* Integration with existing technology(ies)
+* GUI for better code interpretability
+* Interoperability with Jupyter Notebooks
+	* Opening and navigating to Jupyter cells from ProtoPypeline graphs
+	* Running code on Jupyter/python without opening the specific files
+* Avoiding installation of python modules for usage
+	* Usage of special comment tags (eg. #?#) for specifying DOM elements/description
+* Uses native resources for computation. Options to use the kernels specificed in Jupyter.
+
+
+#### Working
+1. Import an "ipynb" file to parse or in case of folders, import all .ipynb files from folder under a project name.
 2. Read the cells to find root node(s) and add it to the DOM. 
-3. Read cells to find "cell labels" and add them to the DOM/dictionary
+3. Read cells to find "cell labels" (specified using special comment tages) and add them to the DOM/dictionary
 4. Read cells to find "cell descriptions" and add them to the DOM/dictionary
 5. Read cells to find "child cells" that have their parents specified using the "cell labels".
 6. Find cells that take in input from the user and add a special child as an input textbox.
@@ -25,9 +39,10 @@ It is due to this that I've written up the requirements for an application that 
 	3. Cell descriptions (if available) and timestamp of cell creation should be shown when a mouse hover is detected.
 	4. Special child cells are shown beside the parent cell. Such parent cells should have a signifier to show child presence.
 	5. Special child cells with inputs required can have input boxes that can be populated.
-	5. Special child cells with graphs, plots or images as references should be displayed.
-	6. Display a clickable "Run" button at the last children on the graph. 
-9. Running the code	when a "run" button attached to a node is clicked:
+	6. Special child cells with graphs, plots or images as references should be displayed.
+	7. All cells that don't have a parent specified would be marked as a child of the preceeding cell.
+	8. Display a clickable "Run" button at the last children on the graph. 
+9. Running the code when a "run" button attached to a node is clicked:
 	1. All the cells in the path from the root to the specific leaf/node should be run. No other pathways/cells should be run.
 	2. If any cells require input:
 		1. If the corresponding text cell is empty, request the user for input through a prompt.
