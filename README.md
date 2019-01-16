@@ -4,6 +4,12 @@ A web application to generate pipelines from Jupyter Notebooks for rapidly evolv
 
 Some of the features are similar to [amie](https://www.amie.ai/) but this application is to be available offline. This would make it easier to handle local files and run experiments at one's own convenience rather than having to use the limited services provided by online providers.
 
+## The Problem
+In the realm of data science/machine learning research, there is rarely any cases where you run into the best solution in the first try. It is through continuously changing the input data and trying out different models that you eventually end up with an ideal solution. While trying to run experiments, I've often ended up creating multiple files with data processed in different ways, and wrote multiple scripts to try to build different models using these files. Within a short span, I mostly end up generating a folder full of csv files and scripts (with 1_1, 1_2, 2_1 etc. as filenames) and forget the outputs I've gotten for each of the scripts. With the granualar changes in parameters that are made, it becomes confusing to even document these changes and results in any file. If I were to even consider running a previously written script, the inputs, outputs, variables and parameters for the files have to be found out again, and I might even have overwritten on the input files sometimes. 
+
+It is due to this that I've written up the requirements for an application that might be helpful to many researchers/ML engineers.
+
+
 ## Initial Requirements
 1. Import an "ipynb" file to parse.
 2. Read the cells to find root node(s) and add it to the DOM. 
